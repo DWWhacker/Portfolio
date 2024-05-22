@@ -1,0 +1,40 @@
+0522_TodoList.Html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>할 일 목록</title>
+<style>
+  /* CSS 스타일링 */
+</style>
+</head>
+<body>
+<h1>할 일 목록</h1>
+<input type="text" id="taskInput" placeholder="할 일을 입력하세요">
+<button onclick="addTask()">추가</button>
+<ul id="taskList">
+  <!-- 할 일 목록이 여기에 동적으로 추가됩니다. -->
+</ul>
+
+<script>
+  // JavaScript 코드
+  function addTask() {
+    var input = document.getElementById("taskInput");
+    var task = input.value;
+    if (task === '') {
+      alert("할 일을 입력하세요!");
+      return;
+    }
+    var ul = document.getElementById("taskList");
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(task));
+    ul.appendChild(li);
+    input.value = '';
+    li.onclick = function() {
+      this.parentNode.removeChild(this);
+    };
+  }
+</script>
+</body>
+</html>
